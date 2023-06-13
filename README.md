@@ -12,7 +12,15 @@
 $ python -m pip install -U pip setuptools wheel pip
 $ python -m pip install -U build
 $ python -m build .
-$ python -m pip install .\dist\sd_sudoku_solver-0.1.0-py3-none-any.whl --force-reinstall
+$ python -m pip install .\dist\sd_sudoku_solver-1.0.0-py3-none-any.whl --force-reinstall
+```
+
+## PIP를 사용한 설치 방법
+
+`git`을 사용해서 설치하기 때문에 `git` 프로그램을 먼저 설치해주세요.
+
+```
+$ python -m pip install -U git+https://github.com/sigmadream/pnu-sudoku-solve
 ```
 
 ## 실행방법
@@ -20,11 +28,24 @@ $ python -m pip install .\dist\sd_sudoku_solver-0.1.0-py3-none-any.whl --force-r
 아래 코드를 `app.py`에 작성 후 실행하거나, `REPL`을 사용해서 확인해주세요.
 
 ```python
-import sudoku_solver
+import sudoku_solver as ss
 
 if __name__ == "__main__":
-    print(sudoku_solver.solve())
+    p = "405001068073628500009003070240790030006102005950000021507064213080217050612300007"
+    b = ss.make_board(p)
+    ss.print_sudoku(b)
+    ss.solve(b)
 ```
+
+## TODO(여름방학에 도전해보세요!)
+
+- [ ] 이미지 입력 및 문제 추출
+  - CNN을 사용해서 스도쿠 이미지를 문자열로 변경할 수 있지 않을까?
+  - Ref. [Solving Sudoku with Convolution Neural Network | Keras](https://towardsdatascience.com/solving-sudoku-with-convolution-neural-network-keras-655ba4be3b11)
+  - Ref. [Sudoku RNN in PyTorch](https://medium.com/@josef_44177/sudoku-rnn-in-pytorch-d1fddef850a8)
+- [ ] 터미널 출력 향상
+  - 터미널 모드에서 출력을 미려하게 할 수 있지 않을까?
+  - Ref. [https://docs.python.org/3/howto/curses.html](https://docs.python.org/3/howto/curses.html)
 
 ## License
 
