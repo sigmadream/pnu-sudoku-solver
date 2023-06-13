@@ -1,4 +1,9 @@
 
+import platform
+import os
+
+CLS = "cls" if platform.system() == "Windows" else "clear"
+
 def make_board(problem):
     sudoku = []
     row = []
@@ -59,6 +64,7 @@ def solve(board):
     for i in range(1,10):
         if is_valid(board, i, (row, col)):
             board[row][col] = i
+            os.system(CLS)
             print(f"\nSolution {row, col}: \n")
             print_sudoku(board)
             if solve(board):
